@@ -118,7 +118,45 @@
         color: var(--color-text-muted);
         margin-bottom: 1rem;
         min-height: 2.4em;
+        flex: 1;
       }
+
+      .product-variants {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-variants span {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .color-swatch {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .color-swatch:hover,
+      .color-swatch.active {
+        transform: scale(1.05);
+        border-color: var(--color-blush);
+      }
+
+      .color-swatch--rose { background: #f7c6d3; }
+      .color-swatch--blanc {
+        background: #ffffff;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+      }
+      .color-swatch--prune { background: #7a5d7a; }
 
       .product-footer {
         display: flex;
@@ -242,7 +280,7 @@
           <!-- Impression -->
           <div class="product-item" data-category="impression">
             <img
-              src="assets/img/products/product-1.jpeg"
+              src="assets/img/products/product-2.jpeg"
               alt="Mug personnalisé"
             />
             <div class="product-info">
@@ -251,6 +289,12 @@
               <p class="product-description">
                 Un classique revisité avec votre prénom, un message ou un visuel unique.
               </p>
+              <div class="product-variants">
+                <span>Couleurs :</span>
+                <button class="color-swatch color-swatch--rose" aria-label="Rose" type="button"></button>
+                <button class="color-swatch color-swatch--blanc" aria-label="Blanc" type="button"></button>
+                <button class="color-swatch color-swatch--prune" aria-label="Prune" type="button"></button>
+              </div>
               <div class="product-footer">
                 <span class="product-price">À partir de 14,90 €</span>
                 <button class="add-to-cart">Ajouter</button>
@@ -261,7 +305,7 @@
           <!-- Broderie -->
           <div class="product-item" data-category="broderie">
             <img
-              src="assets/img/products/product-2.jpeg"
+              src="assets/img/products/product-1.jpeg"
               alt="Livret de naissance personnalisé"
             />
             <div class="product-info">
@@ -318,12 +362,12 @@
           <!-- Impression -->
           <div class="product-item" data-category="impression">
             <img
-              src="assets/img/products/product-1.jpeg"
+              src="assets/img/products/product-5.jpeg"
               alt="T-shirt personnalisé"
             />
             <div class="product-info">
               <p class="product-category">Impression</p>
-              <h3 class="product-name">T-shirt personnalisé</h3>
+              <h3 class="product-name">Sac personnalisé</h3>
               <p class="product-description">
                 Confortable et durable, à l'effigie de votre choix.
               </p>
@@ -337,7 +381,7 @@
           <!-- Broderie -->
           <div class="product-item" data-category="broderie">
             <img
-              src="assets/img/products/product-2.jpeg"
+              src="assets/img/products/product-6.jpeg"
               alt="Coussin brodé"
             />
             <div class="product-info">
@@ -346,6 +390,12 @@
               <p class="product-description">
                 Douceur et personnalisation pour votre intérieur.
               </p>
+              <div class="product-variants">
+                <span>Couleurs :</span>
+                <button class="color-swatch color-swatch--rose" aria-label="Rose" type="button"></button>
+                <button class="color-swatch color-swatch--blanc" aria-label="Blanc" type="button"></button>
+                <button class="color-swatch color-swatch--prune" aria-label="Prune" type="button"></button>
+              </div>
               <div class="product-footer">
                 <span class="product-price">À partir de 22,90 €</span>
                 <button class="add-to-cart">Ajouter</button>
@@ -501,7 +551,7 @@
           const filter = button.dataset.filter;
           products.forEach((product) => {
             if (filter === "all" || product.dataset.category === filter) {
-              product.style.display = "block";
+              product.style.display = "flex";
             } else {
               product.style.display = "none";
             }
@@ -515,6 +565,15 @@
         button.addEventListener("click", (e) => {
           e.preventDefault();
           alert("Produit ajouté au panier ! 🎉");
+        });
+      });
+
+      // Sélection des couleurs pour le mug personnalisé
+      const colorSwatches = document.querySelectorAll(".color-swatch");
+      colorSwatches.forEach((swatch) => {
+        swatch.addEventListener("click", () => {
+          colorSwatches.forEach((item) => item.classList.remove("active"));
+          swatch.classList.add("active");
         });
       });
     </script>
