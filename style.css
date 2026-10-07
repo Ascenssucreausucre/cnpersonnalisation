@@ -6,6 +6,16 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "Avillia";
+  src:
+    url("assets/fonts/Avillia.otf") format("otf"),
+    url("assets/fonts/Avillia.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg: #fdf8f4;
   --color-bg-soft: #f6ece7;
@@ -13,7 +23,8 @@
   --color-blush-dark: #c47f85;
   --color-text: #4a3b36;
   --color-text-muted: #8a7a72;
-  --font-script: "WindSong", "cursive", serif;
+  --font-script: "Avillia", "cursive", serif;
+  --font-cursive: "WindSong", "cursive", serif;
   --font-heading: "Cormorant Garamond", "Georgia", serif;
   --font-body: "Poppins", sans-serif;
   --radius-lg: 1.25rem;
@@ -77,7 +88,7 @@ nav ul {
   display: flex;
   align-items: center;
 }
-nav li:hover a,
+nav a:hover,
 .text-link:hover {
   color: var(--color-blush-dark);
 }
@@ -217,11 +228,26 @@ a {
 }
 
 .brand-script {
-  font-family: var(--font-script);
-  font-weight: 400;
+  font-family: var(--font-body);
+  font-weight: 700;
   font-size: clamp(2.5rem, 5vw, 5rem);
   color: var(--color-blush-dark);
   margin: 0.25rem 0;
+  line-height: 1;
+}
+
+.brand-name,
+.brand-subtitle {
+  display: block;
+}
+
+.brand-subtitle {
+  font-family: var(--font-cursive);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  line-height: 0.8;
+  margin-top: -0.25em;
+  color: var(--color-text);
 }
 
 .hero-tagline {
@@ -516,7 +542,7 @@ a {
 .about-signature {
   font-family: var(--font-script);
   color: var(--color-blush-dark);
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1.5rem 0;
 }
 
